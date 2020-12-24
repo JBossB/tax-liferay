@@ -59,4 +59,19 @@ Luego trae desde ItemShopBasketDummyServiceUtil una lista de ItemShopBasket, imp
 
 Este cálculo lo realicé con un patrón decorator.
 
+## english
+
+To solve this coding problem I have implemented a small program in Java. For this I have used Liferay Developer Studio 3.9, Java 1.8 and built a Java Project.
+To run the program I have added the following instructions.
+```
+java -jar tax-liferay-java %s where %s is 1,2 or 3
+example: java -jar tax-liferay-java 1
+```
+The program recognizes the initial argument which can be 1, 2 or 3.
+Then it brings from ItemShopBasketDummyServiceUtil a list of ItemShopBasket, prints the imput, then prints the output, calculating the tax.
+I did this calculation with a decorator pattern.
+
+
+
+
 
