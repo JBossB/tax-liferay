@@ -48,10 +48,10 @@ Total: 74.68
 
 *Para ejecutar el programa he añadido las siguientes instrucciones.*
 
+```
 java -jar tax-liferay-java %s where %s is 1,2 or 3
-
 example: java -jar tax-liferay-java 1
-
+```
 
 El programa reconoce el argumento inicial que puede ser 1, 2 o 3.
 
