@@ -49,7 +49,7 @@ Total: 74.68
 *Para ejecutar el programa he añadido las siguientes instrucciones.*
 
 ```
-java -jar tax-liferay-java %s where %s is 1,2 or 3
+java -jar tax-liferay-java.jar %s where %s is 1,2 or 3
 example: java -jar tax-liferay-java 1
 ```
 
