@@ -1,0 +1,10 @@
+Bundle-Name: tax-liferay-api
+Bundle-SymbolicName: com.liferay.tax.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.tax.exception,\
+	com.liferay.tax.model,\
+	com.liferay.tax.service,\
+	com.liferay.tax.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../tax-liferay-service/service.xml

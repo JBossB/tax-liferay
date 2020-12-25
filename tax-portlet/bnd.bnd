@@ -1,0 +1,4 @@
+Bundle-Name: tax-portlet
+Bundle-SymbolicName: com.liferay.tax
+Bundle-Version: 1.0.0
+Export-Package: com.liferay.tax.constants

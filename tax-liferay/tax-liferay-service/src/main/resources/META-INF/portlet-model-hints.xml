@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.liferay.tax.model.ItemShopBasket">
+		<field name="itemShopBasketId" type="long" />
+		<field name="shopBasketId" type="long" />
+		<field name="name" type="String" />
+		<field name="isImported" type="boolean" />
+		<field name="isExempt" type="boolean" />
+		<field name="price" type="Double" />
+		<field name="active" type="boolean" />
+		<field name="amount" type="Double" />
+		<field name="tax" type="Double" />
+		<field name="total" type="Double" />
+	</model>
+	<model name="com.liferay.tax.model.ShopBasket">
+		<field name="uuid" type="String" />
+		<field name="shopBasketId" type="long" />
+		<field name="active" type="boolean" />
+		<field name="createDate" type="Date" />
+	</model>
+</model-hints>

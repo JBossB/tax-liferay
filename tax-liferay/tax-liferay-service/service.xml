@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_2_0.dtd">
+
+<service-builder package-path="com.liferay.tax">
+	<author>jbaeza</author>
+	<namespace>jb</namespace>
+	<entity local-service="true" name="ItemShopBasket" remote-service="true" >
+		<!-- PK fields -->
+		<column name="itemShopBasketId" primary="true" type="long"  id-type="increment" />
+		
+		<!-- Other fields -->
+		<column name="shopBasketId" 		type="long" />
+		<column name="name" 		type="String" />
+		<column name="isImported" 	type="boolean" />
+		<column name="isExempt" 	type="boolean" />
+		<column name="price" 		type="Double" />
+		<column name="active" 		type="boolean" />
+		<column name="amount" 		type="Double" />
+		<column name="tax" 			type="Double" />
+		<column name="total" 		type="Double" />
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="name" />
+		</order>
+	</entity>
+	
+	<entity local-service="true" name="ShopBasket" remote-service="true" uuid="true" >
+		<!-- PK fields -->
+		<column name="shopBasketId" primary="true" type="long" />
+		<column name="active" 	type="boolean" />
+		<column name="createDate" 	type="Date" />
+	</entity>
+	
+</service-builder>
