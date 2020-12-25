@@ -89,19 +89,25 @@ public class TaxComponentPortlet extends MVCPortlet {
 		
 		double taxSum = 0D;
 		double totalSum = 0D;
+		double totalDiff = 0D;
 		double feeImported = 0.05;
 		double feeTax = 0.10;
 		for(ItemShopBasket item:items) {
 			if(item.isIsImported()) {
-				item.setTotal(getTotalPrice(item, feeImported));
+				item.setTotal((item.getTotal()==0D?item.getPrice():item.getTotal()) + getTax(item, feeImported));
+				taxSum += (item.getTotal()-item.getPrice());
 			}
-			if(!item.isIsExempt()) {
-				item.setTotal(getTotalPrice(item, feeTax));
+			else if(!item.isIsExempt()) {
+				item.setTotal((item.getTotal()==0D?item.getPrice():item.getTotal()) + getTax(item, feeTax));
+				taxSum += (item.getTotal()-item.getPrice());
+			}
+			else {
+				item.setTotal(item.getPrice());
 			}
 			
-			taxSum += (item.getTotal()-item.getPrice());
+			
 			totalSum += item.getTotal();
-			System.out.println(item.getAmount() + " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getTotal()));
+			System.out.println(1 + " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getTotal()));
 		}
 		System.out.println("Sales taxes: "+ FunctionsUtil.formatDecimal(taxSum));
 		System.out.println("Total: "+ FunctionsUtil.formatDecimal(totalSum));
