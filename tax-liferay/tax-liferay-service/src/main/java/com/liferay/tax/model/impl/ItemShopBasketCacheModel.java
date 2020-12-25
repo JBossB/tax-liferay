@@ -68,10 +68,10 @@ public class ItemShopBasketCacheModel
 		sb.append(shopBasketId);
 		sb.append(", name=");
 		sb.append(name);
-		sb.append(", isImported=");
-		sb.append(isImported);
-		sb.append(", isExempt=");
-		sb.append(isExempt);
+		sb.append(", imported=");
+		sb.append(imported);
+		sb.append(", exempt=");
+		sb.append(exempt);
 		sb.append(", price=");
 		sb.append(price);
 		sb.append(", active=");
@@ -101,8 +101,8 @@ public class ItemShopBasketCacheModel
 			itemShopBasketImpl.setName(name);
 		}
 
-		itemShopBasketImpl.setIsImported(isImported);
-		itemShopBasketImpl.setIsExempt(isExempt);
+		itemShopBasketImpl.setImported(imported);
+		itemShopBasketImpl.setExempt(exempt);
 		itemShopBasketImpl.setPrice(price);
 		itemShopBasketImpl.setActive(active);
 		itemShopBasketImpl.setAmount(amount);
@@ -121,9 +121,9 @@ public class ItemShopBasketCacheModel
 		shopBasketId = objectInput.readLong();
 		name = objectInput.readUTF();
 
-		isImported = objectInput.readBoolean();
+		imported = objectInput.readBoolean();
 
-		isExempt = objectInput.readBoolean();
+		exempt = objectInput.readBoolean();
 
 		price = objectInput.readDouble();
 
@@ -149,9 +149,9 @@ public class ItemShopBasketCacheModel
 			objectOutput.writeUTF(name);
 		}
 
-		objectOutput.writeBoolean(isImported);
+		objectOutput.writeBoolean(imported);
 
-		objectOutput.writeBoolean(isExempt);
+		objectOutput.writeBoolean(exempt);
 
 		objectOutput.writeDouble(price);
 
@@ -167,8 +167,8 @@ public class ItemShopBasketCacheModel
 	public long itemShopBasketId;
 	public long shopBasketId;
 	public String name;
-	public boolean isImported;
-	public boolean isExempt;
+	public boolean imported;
+	public boolean exempt;
 	public double price;
 	public boolean active;
 	public long amount;

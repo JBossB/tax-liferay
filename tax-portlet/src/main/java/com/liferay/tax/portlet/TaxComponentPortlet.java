@@ -6,6 +6,9 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.tax.constants.TaxPortletKeys;
+import com.liferay.tax.decorator.ItemShopBasketNoTaxDecorator;
+import com.liferay.tax.decorator.ItemShopBasketTaxDecorator;
+import com.liferay.tax.decorator.ItemShopBasketTaxImportedDecorator;
 import com.liferay.tax.model.ItemShopBasket;
 import com.liferay.tax.service.ItemShopBasketLocalServiceUtil;
 import com.liferay.tax.util.FunctionsUtil;
@@ -59,11 +62,11 @@ public class TaxComponentPortlet extends MVCPortlet {
 		super.doView(renderRequest, renderResponse);
 	}
 	
-	public void buscar(ActionRequest request, ActionResponse response) throws PortalException {
+	public void view(ActionRequest request, ActionResponse response) throws PortalException {
 		try {
 			long shopBasketId = ParamUtil.getLong(request, "shopBasketId", 1);
 			
-			System.out.println("buscar:"+shopBasketId);
+			System.out.println("view:"+shopBasketId);
 			
 			List<ItemShopBasket> items = ItemShopBasketLocalServiceUtil.getAll("", shopBasketId);
 			String output = "";
@@ -84,27 +87,48 @@ public class TaxComponentPortlet extends MVCPortlet {
 		String output ="Output "+key+":<br>";
 		double taxSum = 0D;
 		double totalSum = 0D;
-		double totalDiff = 0D;
-		double feeImported = 0.05;
-		double feeTax = 0.10;
+		
 		for(ItemShopBasket item:items) {
-			if(item.isIsImported()) {
-				item.setTotal((item.getTotal()==0D?item.getPrice():item.getTotal()) + getTax(item, feeImported));
-				taxSum += (item.getTotal()-item.getPrice());
+			if(item.isImported()) {
+				item = new ItemShopBasketTaxImportedDecorator(item);
+				System.out.println("isImported: "+FunctionsUtil.formatDecimal(item.getTotal()));
 			}
-			else if(!item.isIsExempt()) {
-				item.setTotal((item.getTotal()==0D?item.getPrice():item.getTotal()) + getTax(item, feeTax));
+			if(!item.isExempt()) {
+				item = new ItemShopBasketTaxDecorator(item);
+				System.out.println("Not isExempt: "+FunctionsUtil.formatDecimal(item.getTotal()));
+			}
+			if(!item.isImported()&&item.isExempt()) {
+				item = new ItemShopBasketNoTaxDecorator(item);
+				System.out.println("Not Imported && isExempt: "+FunctionsUtil.formatDecimal(item.getTotal()));
+			}
+			if(null!=item) {
 				taxSum += (item.getTotal()-item.getPrice());
+				totalSum += item.getTotal();
+				System.out.println(item.getAmount() + " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getTotal()));
+				output+=String.valueOf(item.getAmount() + " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getTotal())+"<br>");
 			}
 			else {
-				item.setTotal(item.getPrice());
+				System.out.println("error");
 			}
-			
-			
-			totalSum += item.getTotal();
-			System.out.println(1 + " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getTotal()));
-			output+=String.valueOf(1 + " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getTotal())+"<br>");
 		}
+//		for(ItemShopBasket item:items) {
+//			if(item.isImported()) {
+//				item.setTotal((item.getTotal()==0D?item.getPrice():item.getTotal()) + getTax(item, feeImported));
+//				taxSum += (item.getTotal()-item.getPrice());
+//			}
+//			else if(!item.isExempt()) {
+//				item.setTotal((item.getTotal()==0D?item.getPrice():item.getTotal()) + getTax(item, feeTax));
+//				taxSum += (item.getTotal()-item.getPrice());
+//			}
+//			else {
+//				item.setTotal(item.getPrice());
+//			}
+//			
+//			
+//			totalSum += item.getTotal();
+//			System.out.println(1 + " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getTotal()));
+//			output+=String.valueOf(1 + " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getTotal())+"<br>");
+//		}
 		System.out.println("Sales taxes: "+ FunctionsUtil.formatDecimal(taxSum));
 		System.out.println("Total: "+ FunctionsUtil.formatDecimal(totalSum));
 		
@@ -117,8 +141,8 @@ public class TaxComponentPortlet extends MVCPortlet {
 		System.out.println("Input "+shopBasketId+":");
 		String output ="Input "+shopBasketId+":"+"<br>";
 		for(ItemShopBasket item:items) {
-			System.out.println(1+ " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getPrice()));
-			output+=String.valueOf(1+ " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getPrice())+"<br>");
+			System.out.println(item.getAmount()+ " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getPrice()));
+			output+=String.valueOf(item.getAmount() + " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getPrice())+"<br>");
 		}
 		return output;
 	}

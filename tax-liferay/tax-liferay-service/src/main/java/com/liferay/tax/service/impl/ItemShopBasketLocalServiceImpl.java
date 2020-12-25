@@ -24,6 +24,7 @@ import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.tax.constant.DefaultData;
 import com.liferay.tax.constant.model.ItemTemp;
 import com.liferay.tax.model.ItemShopBasket;
@@ -109,11 +110,15 @@ public class ItemShopBasketLocalServiceImpl
 	
 	public void initDefaultData() {
 		
-		for(int j=1;j<4;j++) {
-			ShopBasket sb= ShopBasketLocalServiceUtil.createShopBasket(j);
-			sb.setActive(true);
-			sb.setShopBasketId(Long.valueOf(j));
-			sb = ShopBasketLocalServiceUtil.addShopBasket(sb);
+		for(long j=1;j<4;j++) {
+			
+			ShopBasket sb= ShopBasketLocalServiceUtil.fetchShopBasket(j);
+			if(Validator.isNull(sb)) {
+				sb = ShopBasketLocalServiceUtil.createShopBasket(j);
+				sb.setActive(true);
+				sb.setShopBasketId(j);
+				sb = ShopBasketLocalServiceUtil.addShopBasket(sb);
+			}
 		}
 		
 		
@@ -126,8 +131,8 @@ public class ItemShopBasketLocalServiceImpl
 				i.setName(it.getName());
 				i.setPrice(it.getPrice());
 				i.setAmount(it.getAmount());
-				i.setIsImported(it.isImported());
-				i.setIsExempt(it.isExempt());
+				i.setImported(it.isImported());
+				i.setExempt(it.isExempt());
 				i.setActive(it.isActive());
 				
 				i = ItemShopBasketLocalServiceUtil.addItemShopBasket(i);

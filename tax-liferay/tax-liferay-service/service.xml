@@ -6,18 +6,18 @@
 	<namespace>jb</namespace>
 	<entity local-service="true" name="ItemShopBasket" remote-service="true" >
 		<!-- PK fields -->
-		<column name="itemShopBasketId" primary="true" type="long"  id-type="increment" />
+		<column name="itemShopBasketId" primary="true" type="long" />
 		
 		<!-- Other fields -->
 		<column name="shopBasketId" type="long" />
 		<column name="name" 		type="String" />
-		<column name="isImported" 	type="boolean" />
-		<column name="isExempt" 	type="boolean" />
-		<column name="price" 		type="double" />
+		<column name="imported" 	type="boolean" />
+		<column name="exempt" 		type="boolean" />
+		<column name="price" 		type="Double" />
 		<column name="active" 		type="boolean" />
 		<column name="amount" 		type="long" />
-		<column name="tax" 			type="double" />
-		<column name="total" 		type="double" />
+		<column name="tax" 			type="Double" />
+		<column name="total" 		type="Double" />
 		<!-- Order -->
 		<order by="asc">
 			<order-column name="name" />

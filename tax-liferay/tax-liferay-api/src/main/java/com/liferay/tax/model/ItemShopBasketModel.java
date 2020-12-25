@@ -97,60 +97,60 @@ public interface ItemShopBasketModel extends BaseModel<ItemShopBasket> {
 	public void setName(String name);
 
 	/**
-	 * Returns the is imported of this item shop basket.
+	 * Returns the imported of this item shop basket.
 	 *
-	 * @return the is imported of this item shop basket
+	 * @return the imported of this item shop basket
 	 */
-	public boolean getIsImported();
+	public boolean getImported();
 
 	/**
-	 * Returns <code>true</code> if this item shop basket is is imported.
+	 * Returns <code>true</code> if this item shop basket is imported.
 	 *
-	 * @return <code>true</code> if this item shop basket is is imported; <code>false</code> otherwise
+	 * @return <code>true</code> if this item shop basket is imported; <code>false</code> otherwise
 	 */
-	public boolean isIsImported();
+	public boolean isImported();
 
 	/**
-	 * Sets whether this item shop basket is is imported.
+	 * Sets whether this item shop basket is imported.
 	 *
-	 * @param isImported the is imported of this item shop basket
+	 * @param imported the imported of this item shop basket
 	 */
-	public void setIsImported(boolean isImported);
+	public void setImported(boolean imported);
 
 	/**
-	 * Returns the is exempt of this item shop basket.
+	 * Returns the exempt of this item shop basket.
 	 *
-	 * @return the is exempt of this item shop basket
+	 * @return the exempt of this item shop basket
 	 */
-	public boolean getIsExempt();
+	public boolean getExempt();
 
 	/**
-	 * Returns <code>true</code> if this item shop basket is is exempt.
+	 * Returns <code>true</code> if this item shop basket is exempt.
 	 *
-	 * @return <code>true</code> if this item shop basket is is exempt; <code>false</code> otherwise
+	 * @return <code>true</code> if this item shop basket is exempt; <code>false</code> otherwise
 	 */
-	public boolean isIsExempt();
+	public boolean isExempt();
 
 	/**
-	 * Sets whether this item shop basket is is exempt.
+	 * Sets whether this item shop basket is exempt.
 	 *
-	 * @param isExempt the is exempt of this item shop basket
+	 * @param exempt the exempt of this item shop basket
 	 */
-	public void setIsExempt(boolean isExempt);
+	public void setExempt(boolean exempt);
 
 	/**
 	 * Returns the price of this item shop basket.
 	 *
 	 * @return the price of this item shop basket
 	 */
-	public double getPrice();
+	public Double getPrice();
 
 	/**
 	 * Sets the price of this item shop basket.
 	 *
 	 * @param price the price of this item shop basket
 	 */
-	public void setPrice(double price);
+	public void setPrice(Double price);
 
 	/**
 	 * Returns the active of this item shop basket.
@@ -192,27 +192,27 @@ public interface ItemShopBasketModel extends BaseModel<ItemShopBasket> {
 	 *
 	 * @return the tax of this item shop basket
 	 */
-	public double getTax();
+	public Double getTax();
 
 	/**
 	 * Sets the tax of this item shop basket.
 	 *
 	 * @param tax the tax of this item shop basket
 	 */
-	public void setTax(double tax);
+	public void setTax(Double tax);
 
 	/**
 	 * Returns the total of this item shop basket.
 	 *
 	 * @return the total of this item shop basket
 	 */
-	public double getTotal();
+	public Double getTotal();
 
 	/**
 	 * Sets the total of this item shop basket.
 	 *
 	 * @param total the total of this item shop basket
 	 */
-	public void setTotal(double total);
+	public void setTotal(Double total);
 
 }

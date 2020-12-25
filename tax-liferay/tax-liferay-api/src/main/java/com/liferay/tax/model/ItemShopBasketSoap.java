@@ -33,8 +33,8 @@ public class ItemShopBasketSoap implements Serializable {
 		soapModel.setItemShopBasketId(model.getItemShopBasketId());
 		soapModel.setShopBasketId(model.getShopBasketId());
 		soapModel.setName(model.getName());
-		soapModel.setIsImported(model.isIsImported());
-		soapModel.setIsExempt(model.isIsExempt());
+		soapModel.setImported(model.isImported());
+		soapModel.setExempt(model.isExempt());
 		soapModel.setPrice(model.getPrice());
 		soapModel.setActive(model.isActive());
 		soapModel.setAmount(model.getAmount());
@@ -122,35 +122,35 @@ public class ItemShopBasketSoap implements Serializable {
 		_name = name;
 	}
 
-	public boolean getIsImported() {
-		return _isImported;
+	public boolean getImported() {
+		return _imported;
 	}
 
-	public boolean isIsImported() {
-		return _isImported;
+	public boolean isImported() {
+		return _imported;
 	}
 
-	public void setIsImported(boolean isImported) {
-		_isImported = isImported;
+	public void setImported(boolean imported) {
+		_imported = imported;
 	}
 
-	public boolean getIsExempt() {
-		return _isExempt;
+	public boolean getExempt() {
+		return _exempt;
 	}
 
-	public boolean isIsExempt() {
-		return _isExempt;
+	public boolean isExempt() {
+		return _exempt;
 	}
 
-	public void setIsExempt(boolean isExempt) {
-		_isExempt = isExempt;
+	public void setExempt(boolean exempt) {
+		_exempt = exempt;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return _price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		_price = price;
 	}
 
@@ -174,31 +174,31 @@ public class ItemShopBasketSoap implements Serializable {
 		_amount = amount;
 	}
 
-	public double getTax() {
+	public Double getTax() {
 		return _tax;
 	}
 
-	public void setTax(double tax) {
+	public void setTax(Double tax) {
 		_tax = tax;
 	}
 
-	public double getTotal() {
+	public Double getTotal() {
 		return _total;
 	}
 
-	public void setTotal(double total) {
+	public void setTotal(Double total) {
 		_total = total;
 	}
 
 	private long _itemShopBasketId;
 	private long _shopBasketId;
 	private String _name;
-	private boolean _isImported;
-	private boolean _isExempt;
-	private double _price;
+	private boolean _imported;
+	private boolean _exempt;
+	private Double _price;
 	private boolean _active;
 	private long _amount;
-	private double _tax;
-	private double _total;
+	private Double _tax;
+	private Double _total;
 
 }

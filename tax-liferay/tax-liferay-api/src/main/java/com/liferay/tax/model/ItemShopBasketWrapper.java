@@ -44,8 +44,8 @@ public class ItemShopBasketWrapper
 		attributes.put("itemShopBasketId", getItemShopBasketId());
 		attributes.put("shopBasketId", getShopBasketId());
 		attributes.put("name", getName());
-		attributes.put("isImported", isIsImported());
-		attributes.put("isExempt", isIsExempt());
+		attributes.put("imported", isImported());
+		attributes.put("exempt", isExempt());
 		attributes.put("price", getPrice());
 		attributes.put("active", isActive());
 		attributes.put("amount", getAmount());
@@ -75,16 +75,16 @@ public class ItemShopBasketWrapper
 			setName(name);
 		}
 
-		Boolean isImported = (Boolean)attributes.get("isImported");
+		Boolean imported = (Boolean)attributes.get("imported");
 
-		if (isImported != null) {
-			setIsImported(isImported);
+		if (imported != null) {
+			setImported(imported);
 		}
 
-		Boolean isExempt = (Boolean)attributes.get("isExempt");
+		Boolean exempt = (Boolean)attributes.get("exempt");
 
-		if (isExempt != null) {
-			setIsExempt(isExempt);
+		if (exempt != null) {
+			setExempt(exempt);
 		}
 
 		Double price = (Double)attributes.get("price");
@@ -139,23 +139,23 @@ public class ItemShopBasketWrapper
 	}
 
 	/**
-	 * Returns the is exempt of this item shop basket.
+	 * Returns the exempt of this item shop basket.
 	 *
-	 * @return the is exempt of this item shop basket
+	 * @return the exempt of this item shop basket
 	 */
 	@Override
-	public boolean getIsExempt() {
-		return model.getIsExempt();
+	public boolean getExempt() {
+		return model.getExempt();
 	}
 
 	/**
-	 * Returns the is imported of this item shop basket.
+	 * Returns the imported of this item shop basket.
 	 *
-	 * @return the is imported of this item shop basket
+	 * @return the imported of this item shop basket
 	 */
 	@Override
-	public boolean getIsImported() {
-		return model.getIsImported();
+	public boolean getImported() {
+		return model.getImported();
 	}
 
 	/**
@@ -184,7 +184,7 @@ public class ItemShopBasketWrapper
 	 * @return the price of this item shop basket
 	 */
 	@Override
-	public double getPrice() {
+	public Double getPrice() {
 		return model.getPrice();
 	}
 
@@ -214,7 +214,7 @@ public class ItemShopBasketWrapper
 	 * @return the tax of this item shop basket
 	 */
 	@Override
-	public double getTax() {
+	public Double getTax() {
 		return model.getTax();
 	}
 
@@ -224,7 +224,7 @@ public class ItemShopBasketWrapper
 	 * @return the total of this item shop basket
 	 */
 	@Override
-	public double getTotal() {
+	public Double getTotal() {
 		return model.getTotal();
 	}
 
@@ -239,23 +239,23 @@ public class ItemShopBasketWrapper
 	}
 
 	/**
-	 * Returns <code>true</code> if this item shop basket is is exempt.
+	 * Returns <code>true</code> if this item shop basket is exempt.
 	 *
-	 * @return <code>true</code> if this item shop basket is is exempt; <code>false</code> otherwise
+	 * @return <code>true</code> if this item shop basket is exempt; <code>false</code> otherwise
 	 */
 	@Override
-	public boolean isIsExempt() {
-		return model.isIsExempt();
+	public boolean isExempt() {
+		return model.isExempt();
 	}
 
 	/**
-	 * Returns <code>true</code> if this item shop basket is is imported.
+	 * Returns <code>true</code> if this item shop basket is imported.
 	 *
-	 * @return <code>true</code> if this item shop basket is is imported; <code>false</code> otherwise
+	 * @return <code>true</code> if this item shop basket is imported; <code>false</code> otherwise
 	 */
 	@Override
-	public boolean isIsImported() {
-		return model.isIsImported();
+	public boolean isImported() {
+		return model.isImported();
 	}
 
 	@Override
@@ -284,23 +284,23 @@ public class ItemShopBasketWrapper
 	}
 
 	/**
-	 * Sets whether this item shop basket is is exempt.
+	 * Sets whether this item shop basket is exempt.
 	 *
-	 * @param isExempt the is exempt of this item shop basket
+	 * @param exempt the exempt of this item shop basket
 	 */
 	@Override
-	public void setIsExempt(boolean isExempt) {
-		model.setIsExempt(isExempt);
+	public void setExempt(boolean exempt) {
+		model.setExempt(exempt);
 	}
 
 	/**
-	 * Sets whether this item shop basket is is imported.
+	 * Sets whether this item shop basket is imported.
 	 *
-	 * @param isImported the is imported of this item shop basket
+	 * @param imported the imported of this item shop basket
 	 */
 	@Override
-	public void setIsImported(boolean isImported) {
-		model.setIsImported(isImported);
+	public void setImported(boolean imported) {
+		model.setImported(imported);
 	}
 
 	/**
@@ -329,7 +329,7 @@ public class ItemShopBasketWrapper
 	 * @param price the price of this item shop basket
 	 */
 	@Override
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		model.setPrice(price);
 	}
 
@@ -359,7 +359,7 @@ public class ItemShopBasketWrapper
 	 * @param tax the tax of this item shop basket
 	 */
 	@Override
-	public void setTax(double tax) {
+	public void setTax(Double tax) {
 		model.setTax(tax);
 	}
 
@@ -369,7 +369,7 @@ public class ItemShopBasketWrapper
 	 * @param total the total of this item shop basket
 	 */
 	@Override
-	public void setTotal(double total) {
+	public void setTotal(Double total) {
 		model.setTotal(total);
 	}
 

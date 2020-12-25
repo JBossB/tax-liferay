@@ -68,8 +68,8 @@ public class ItemShopBasketModelImpl
 
 	public static final Object[][] TABLE_COLUMNS = {
 		{"itemShopBasketId", Types.BIGINT}, {"shopBasketId", Types.BIGINT},
-		{"name", Types.VARCHAR}, {"isImported", Types.BOOLEAN},
-		{"isExempt", Types.BOOLEAN}, {"price", Types.DOUBLE},
+		{"name", Types.VARCHAR}, {"imported", Types.BOOLEAN},
+		{"exempt", Types.BOOLEAN}, {"price", Types.DOUBLE},
 		{"active_", Types.BOOLEAN}, {"amount", Types.BIGINT},
 		{"tax", Types.DOUBLE}, {"total", Types.DOUBLE}
 	};
@@ -81,8 +81,8 @@ public class ItemShopBasketModelImpl
 		TABLE_COLUMNS_MAP.put("itemShopBasketId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("shopBasketId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("name", Types.VARCHAR);
-		TABLE_COLUMNS_MAP.put("isImported", Types.BOOLEAN);
-		TABLE_COLUMNS_MAP.put("isExempt", Types.BOOLEAN);
+		TABLE_COLUMNS_MAP.put("imported", Types.BOOLEAN);
+		TABLE_COLUMNS_MAP.put("exempt", Types.BOOLEAN);
 		TABLE_COLUMNS_MAP.put("price", Types.DOUBLE);
 		TABLE_COLUMNS_MAP.put("active_", Types.BOOLEAN);
 		TABLE_COLUMNS_MAP.put("amount", Types.BIGINT);
@@ -91,7 +91,7 @@ public class ItemShopBasketModelImpl
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table jb_ItemShopBasket (itemShopBasketId LONG not null primary key,shopBasketId LONG,name VARCHAR(75) null,isImported BOOLEAN,isExempt BOOLEAN,price DOUBLE,active_ BOOLEAN,amount LONG,tax DOUBLE,total DOUBLE)";
+		"create table jb_ItemShopBasket (itemShopBasketId LONG not null primary key,shopBasketId LONG,name VARCHAR(75) null,imported BOOLEAN,exempt BOOLEAN,price DOUBLE,active_ BOOLEAN,amount LONG,tax DOUBLE,total DOUBLE)";
 
 	public static final String TABLE_SQL_DROP = "drop table jb_ItemShopBasket";
 
@@ -131,8 +131,8 @@ public class ItemShopBasketModelImpl
 		model.setItemShopBasketId(soapModel.getItemShopBasketId());
 		model.setShopBasketId(soapModel.getShopBasketId());
 		model.setName(soapModel.getName());
-		model.setIsImported(soapModel.isIsImported());
-		model.setIsExempt(soapModel.isIsExempt());
+		model.setImported(soapModel.isImported());
+		model.setExempt(soapModel.isExempt());
 		model.setPrice(soapModel.getPrice());
 		model.setActive(soapModel.isActive());
 		model.setAmount(soapModel.getAmount());
@@ -307,15 +307,14 @@ public class ItemShopBasketModelImpl
 		attributeSetterBiConsumers.put(
 			"name",
 			(BiConsumer<ItemShopBasket, String>)ItemShopBasket::setName);
-		attributeGetterFunctions.put(
-			"isImported", ItemShopBasket::getIsImported);
+		attributeGetterFunctions.put("imported", ItemShopBasket::getImported);
 		attributeSetterBiConsumers.put(
-			"isImported",
-			(BiConsumer<ItemShopBasket, Boolean>)ItemShopBasket::setIsImported);
-		attributeGetterFunctions.put("isExempt", ItemShopBasket::getIsExempt);
+			"imported",
+			(BiConsumer<ItemShopBasket, Boolean>)ItemShopBasket::setImported);
+		attributeGetterFunctions.put("exempt", ItemShopBasket::getExempt);
 		attributeSetterBiConsumers.put(
-			"isExempt",
-			(BiConsumer<ItemShopBasket, Boolean>)ItemShopBasket::setIsExempt);
+			"exempt",
+			(BiConsumer<ItemShopBasket, Boolean>)ItemShopBasket::setExempt);
 		attributeGetterFunctions.put("price", ItemShopBasket::getPrice);
 		attributeSetterBiConsumers.put(
 			"price",
@@ -382,46 +381,46 @@ public class ItemShopBasketModelImpl
 
 	@JSON
 	@Override
-	public boolean getIsImported() {
-		return _isImported;
+	public boolean getImported() {
+		return _imported;
 	}
 
 	@JSON
 	@Override
-	public boolean isIsImported() {
-		return _isImported;
+	public boolean isImported() {
+		return _imported;
 	}
 
 	@Override
-	public void setIsImported(boolean isImported) {
-		_isImported = isImported;
-	}
-
-	@JSON
-	@Override
-	public boolean getIsExempt() {
-		return _isExempt;
+	public void setImported(boolean imported) {
+		_imported = imported;
 	}
 
 	@JSON
 	@Override
-	public boolean isIsExempt() {
-		return _isExempt;
-	}
-
-	@Override
-	public void setIsExempt(boolean isExempt) {
-		_isExempt = isExempt;
+	public boolean getExempt() {
+		return _exempt;
 	}
 
 	@JSON
 	@Override
-	public double getPrice() {
+	public boolean isExempt() {
+		return _exempt;
+	}
+
+	@Override
+	public void setExempt(boolean exempt) {
+		_exempt = exempt;
+	}
+
+	@JSON
+	@Override
+	public Double getPrice() {
 		return _price;
 	}
 
 	@Override
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		_price = price;
 	}
 
@@ -455,23 +454,23 @@ public class ItemShopBasketModelImpl
 
 	@JSON
 	@Override
-	public double getTax() {
+	public Double getTax() {
 		return _tax;
 	}
 
 	@Override
-	public void setTax(double tax) {
+	public void setTax(Double tax) {
 		_tax = tax;
 	}
 
 	@JSON
 	@Override
-	public double getTotal() {
+	public Double getTotal() {
 		return _total;
 	}
 
 	@Override
-	public void setTotal(double total) {
+	public void setTotal(Double total) {
 		_total = total;
 	}
 
@@ -510,8 +509,8 @@ public class ItemShopBasketModelImpl
 		itemShopBasketImpl.setItemShopBasketId(getItemShopBasketId());
 		itemShopBasketImpl.setShopBasketId(getShopBasketId());
 		itemShopBasketImpl.setName(getName());
-		itemShopBasketImpl.setIsImported(isIsImported());
-		itemShopBasketImpl.setIsExempt(isIsExempt());
+		itemShopBasketImpl.setImported(isImported());
+		itemShopBasketImpl.setExempt(isExempt());
 		itemShopBasketImpl.setPrice(getPrice());
 		itemShopBasketImpl.setActive(isActive());
 		itemShopBasketImpl.setAmount(getAmount());
@@ -594,19 +593,31 @@ public class ItemShopBasketModelImpl
 			itemShopBasketCacheModel.name = null;
 		}
 
-		itemShopBasketCacheModel.isImported = isIsImported();
+		itemShopBasketCacheModel.imported = isImported();
 
-		itemShopBasketCacheModel.isExempt = isIsExempt();
+		itemShopBasketCacheModel.exempt = isExempt();
 
-		itemShopBasketCacheModel.price = getPrice();
+		Double price = getPrice();
+
+		if (price != null) {
+			itemShopBasketCacheModel.price = price;
+		}
 
 		itemShopBasketCacheModel.active = isActive();
 
 		itemShopBasketCacheModel.amount = getAmount();
 
-		itemShopBasketCacheModel.tax = getTax();
+		Double tax = getTax();
 
-		itemShopBasketCacheModel.total = getTotal();
+		if (tax != null) {
+			itemShopBasketCacheModel.tax = tax;
+		}
+
+		Double total = getTotal();
+
+		if (total != null) {
+			itemShopBasketCacheModel.total = total;
+		}
 
 		return itemShopBasketCacheModel;
 	}
@@ -687,13 +698,13 @@ public class ItemShopBasketModelImpl
 	private long _itemShopBasketId;
 	private long _shopBasketId;
 	private String _name;
-	private boolean _isImported;
-	private boolean _isExempt;
-	private double _price;
+	private boolean _imported;
+	private boolean _exempt;
+	private Double _price;
 	private boolean _active;
 	private long _amount;
-	private double _tax;
-	private double _total;
+	private Double _tax;
+	private Double _total;
 	private ItemShopBasket _escapedModel;
 
 }
