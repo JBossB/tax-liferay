@@ -11,7 +11,6 @@ import com.liferay.tax.service.ItemShopBasketLocalServiceUtil;
 import com.liferay.tax.util.FunctionsUtil;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.portlet.ActionRequest;
@@ -48,10 +47,7 @@ public class TaxComponentPortlet extends MVCPortlet {
 	@Override
 	public void doView(RenderRequest renderRequest, RenderResponse renderResponse)
 			throws IOException, PortletException {
-
-		
 		int count= ItemShopBasketLocalServiceUtil.getItemShopBasketsCount();
-		
 		if(count == 0) {
 			System.out.println("NOT DEFAULT DATA EXIST");
 			ItemShopBasketLocalServiceUtil.initDefaultData();
@@ -70,12 +66,11 @@ public class TaxComponentPortlet extends MVCPortlet {
 			System.out.println("buscar:"+shopBasketId);
 			
 			List<ItemShopBasket> items = ItemShopBasketLocalServiceUtil.getAll("", shopBasketId);
-			printInput(shopBasketId, items);
-			printOutput(shopBasketId, items);
-			List listaInput = new ArrayList();
-			List listaOutput = new ArrayList();
-			request.setAttribute("listaInput", listaInput);
-			request.setAttribute("listaOutput", listaOutput);
+			String output = "";
+			output = printInput(shopBasketId, items);
+			output += printOutput(shopBasketId, items);
+			
+			request.setAttribute("output", output);
 			
 		}
 		catch (Exception e ) {
@@ -84,9 +79,9 @@ public class TaxComponentPortlet extends MVCPortlet {
 		response.setRenderParameter("jspPage", "/view.jsp");
 	}
 	
-	private static void printOutput(long key, List<ItemShopBasket> items) {
+	private static String printOutput(long key, List<ItemShopBasket> items) {
 		System.out.println("Output "+key+":");
-		
+		String output ="Output "+key+":<br>";
 		double taxSum = 0D;
 		double totalSum = 0D;
 		double totalDiff = 0D;
@@ -108,16 +103,24 @@ public class TaxComponentPortlet extends MVCPortlet {
 			
 			totalSum += item.getTotal();
 			System.out.println(1 + " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getTotal()));
+			output+=String.valueOf(1 + " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getTotal())+"<br>");
 		}
 		System.out.println("Sales taxes: "+ FunctionsUtil.formatDecimal(taxSum));
 		System.out.println("Total: "+ FunctionsUtil.formatDecimal(totalSum));
+		
+		output+=String.valueOf("Sales taxes: "+ FunctionsUtil.formatDecimal(taxSum)+"<br>");
+		output+=String.valueOf("Total: "+ FunctionsUtil.formatDecimal(totalSum)+"<br>");
+		return output;
 	}
 	
-	private static void printInput(long shopBasketId, List<ItemShopBasket> items) {
+	private static String printInput(long shopBasketId, List<ItemShopBasket> items) {
 		System.out.println("Input "+shopBasketId+":");
+		String output ="Input "+shopBasketId+":"+"<br>";
 		for(ItemShopBasket item:items) {
 			System.out.println(1+ " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getPrice()));
+			output+=String.valueOf(1+ " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getPrice())+"<br>");
 		}
+		return output;
 	}
 	
 	private static double getTotalPrice(ItemShopBasket item, double fee){

@@ -2,23 +2,24 @@ package com.liferay.tax.constant.model;
 
 public class ItemTemp {
 
-	private Long itemId;
-	private Long shopBasketId;
+	private long itemId;
+	private long shopBasketId;
+	private long amount = 1L;
 	private String name;
 	private boolean isImported;
 	private boolean isExempt;
-	private Double price;
+	private double price;
 	private boolean active;
-	public Long getItemId() {
+	public long getItemId() {
 		return itemId;
 	}
-	public void setItemId(Long itemId) {
+	public void setItemId(long itemId) {
 		this.itemId = itemId;
 	}
-	public Long getShopBasketId() {
+	public long getShopBasketId() {
 		return shopBasketId;
 	}
-	public void setShopBasketId(Long shopBasketId) {
+	public void setShopBasketId(long shopBasketId) {
 		this.shopBasketId = shopBasketId;
 	}
 	public String getName() {
@@ -33,10 +34,10 @@ public class ItemTemp {
 	public void setImported(boolean isImported) {
 		this.isImported = isImported;
 	}
-	public Double getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(Double price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	public boolean isActive() {
@@ -61,7 +62,7 @@ public class ItemTemp {
 	 * @param price
 	 * @param active
 	 */
-	public ItemTemp(Long itemId, Long shopBasketId, String name, boolean isImported, boolean isExempt, Double price,
+	public ItemTemp(long itemId, long shopBasketId, String name, boolean isImported, boolean isExempt, double price,
 			boolean active) {
 		super();
 		this.itemId = itemId;
@@ -71,6 +72,12 @@ public class ItemTemp {
 		this.isExempt = isExempt;
 		this.price = price;
 		this.active = active;
+	}
+	public long getAmount() {
+		return amount;
+	}
+	public void setAmount(long amount) {
+		this.amount = amount;
 	}
 	
 	

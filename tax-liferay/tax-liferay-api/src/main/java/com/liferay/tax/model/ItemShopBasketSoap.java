@@ -146,11 +146,11 @@ public class ItemShopBasketSoap implements Serializable {
 		_isExempt = isExempt;
 	}
 
-	public Double getPrice() {
+	public double getPrice() {
 		return _price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(double price) {
 		_price = price;
 	}
 
@@ -166,27 +166,27 @@ public class ItemShopBasketSoap implements Serializable {
 		_active = active;
 	}
 
-	public Double getAmount() {
+	public long getAmount() {
 		return _amount;
 	}
 
-	public void setAmount(Double amount) {
+	public void setAmount(long amount) {
 		_amount = amount;
 	}
 
-	public Double getTax() {
+	public double getTax() {
 		return _tax;
 	}
 
-	public void setTax(Double tax) {
+	public void setTax(double tax) {
 		_tax = tax;
 	}
 
-	public Double getTotal() {
+	public double getTotal() {
 		return _total;
 	}
 
-	public void setTotal(Double total) {
+	public void setTotal(double total) {
 		_total = total;
 	}
 
@@ -195,10 +195,10 @@ public class ItemShopBasketSoap implements Serializable {
 	private String _name;
 	private boolean _isImported;
 	private boolean _isExempt;
-	private Double _price;
+	private double _price;
 	private boolean _active;
-	private Double _amount;
-	private Double _tax;
-	private Double _total;
+	private long _amount;
+	private double _tax;
+	private double _total;
 
 }

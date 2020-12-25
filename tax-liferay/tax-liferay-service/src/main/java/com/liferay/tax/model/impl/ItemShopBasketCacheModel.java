@@ -129,7 +129,7 @@ public class ItemShopBasketCacheModel
 
 		active = objectInput.readBoolean();
 
-		amount = objectInput.readDouble();
+		amount = objectInput.readLong();
 
 		tax = objectInput.readDouble();
 
@@ -157,7 +157,7 @@ public class ItemShopBasketCacheModel
 
 		objectOutput.writeBoolean(active);
 
-		objectOutput.writeDouble(amount);
+		objectOutput.writeLong(amount);
 
 		objectOutput.writeDouble(tax);
 
@@ -171,7 +171,7 @@ public class ItemShopBasketCacheModel
 	public boolean isExempt;
 	public double price;
 	public boolean active;
-	public double amount;
+	public long amount;
 	public double tax;
 	public double total;
 

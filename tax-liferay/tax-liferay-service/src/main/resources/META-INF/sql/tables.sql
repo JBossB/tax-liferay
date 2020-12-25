@@ -32,7 +32,7 @@ create table jb_ItemShopBasket (
 	isExempt BOOLEAN,
 	price DOUBLE,
 	active_ BOOLEAN,
-	amount DOUBLE,
+	amount LONG,
 	tax DOUBLE,
 	total DOUBLE
 );

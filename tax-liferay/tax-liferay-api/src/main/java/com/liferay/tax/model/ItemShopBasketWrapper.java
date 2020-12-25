@@ -99,7 +99,7 @@ public class ItemShopBasketWrapper
 			setActive(active);
 		}
 
-		Double amount = (Double)attributes.get("amount");
+		Long amount = (Long)attributes.get("amount");
 
 		if (amount != null) {
 			setAmount(amount);
@@ -134,7 +134,7 @@ public class ItemShopBasketWrapper
 	 * @return the amount of this item shop basket
 	 */
 	@Override
-	public Double getAmount() {
+	public long getAmount() {
 		return model.getAmount();
 	}
 
@@ -184,7 +184,7 @@ public class ItemShopBasketWrapper
 	 * @return the price of this item shop basket
 	 */
 	@Override
-	public Double getPrice() {
+	public double getPrice() {
 		return model.getPrice();
 	}
 
@@ -214,7 +214,7 @@ public class ItemShopBasketWrapper
 	 * @return the tax of this item shop basket
 	 */
 	@Override
-	public Double getTax() {
+	public double getTax() {
 		return model.getTax();
 	}
 
@@ -224,7 +224,7 @@ public class ItemShopBasketWrapper
 	 * @return the total of this item shop basket
 	 */
 	@Override
-	public Double getTotal() {
+	public double getTotal() {
 		return model.getTotal();
 	}
 
@@ -279,7 +279,7 @@ public class ItemShopBasketWrapper
 	 * @param amount the amount of this item shop basket
 	 */
 	@Override
-	public void setAmount(Double amount) {
+	public void setAmount(long amount) {
 		model.setAmount(amount);
 	}
 
@@ -329,7 +329,7 @@ public class ItemShopBasketWrapper
 	 * @param price the price of this item shop basket
 	 */
 	@Override
-	public void setPrice(Double price) {
+	public void setPrice(double price) {
 		model.setPrice(price);
 	}
 
@@ -359,7 +359,7 @@ public class ItemShopBasketWrapper
 	 * @param tax the tax of this item shop basket
 	 */
 	@Override
-	public void setTax(Double tax) {
+	public void setTax(double tax) {
 		model.setTax(tax);
 	}
 
@@ -369,7 +369,7 @@ public class ItemShopBasketWrapper
 	 * @param total the total of this item shop basket
 	 */
 	@Override
-	public void setTotal(Double total) {
+	public void setTotal(double total) {
 		model.setTotal(total);
 	}
 

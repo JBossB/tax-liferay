@@ -9,15 +9,15 @@
 		<column name="itemShopBasketId" primary="true" type="long"  id-type="increment" />
 		
 		<!-- Other fields -->
-		<column name="shopBasketId" 		type="long" />
+		<column name="shopBasketId" type="long" />
 		<column name="name" 		type="String" />
 		<column name="isImported" 	type="boolean" />
 		<column name="isExempt" 	type="boolean" />
-		<column name="price" 		type="Double" />
+		<column name="price" 		type="double" />
 		<column name="active" 		type="boolean" />
-		<column name="amount" 		type="Double" />
-		<column name="tax" 			type="Double" />
-		<column name="total" 		type="Double" />
+		<column name="amount" 		type="long" />
+		<column name="tax" 			type="double" />
+		<column name="total" 		type="double" />
 		<!-- Order -->
 		<order by="asc">
 			<order-column name="name" />
@@ -27,7 +27,7 @@
 	<entity local-service="true" name="ShopBasket" remote-service="true" uuid="true" >
 		<!-- PK fields -->
 		<column name="shopBasketId" primary="true" type="long" />
-		<column name="active" 	type="boolean" />
+		<column name="active" 		type="boolean" />
 		<column name="createDate" 	type="Date" />
 	</entity>
 	

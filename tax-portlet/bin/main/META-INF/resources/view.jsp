@@ -1,6 +1,9 @@
+<%@page import="com.liferay.portal.kernel.util.ParamUtil"%>
 <%@ include file="/init.jsp" %>
 <portlet:actionURL name="buscar" var="buscarURL"></portlet:actionURL>
-
+<%
+	String output =(String)request.getAttribute("output");
+%>
 <div  class="container center" id="container-data">
 	<form id="form-buscar" action="${buscarURL}" method="post">
 		<div class="row" style="margin-bottom:15px;">
@@ -16,7 +19,9 @@
 			<div class="col-md-6">
 				<button type="button" class="btn btn-primary btn-md"  onclick="buscar();"><i class="glyphicon glyphicon-search"></i> Buscar</button>
 			</div>
-		</div>
+			<div class="col-md-6">
+				<%=(null!=output?output:"no data") %>
+			</div>
 		</div>
 	</form>
 </div>

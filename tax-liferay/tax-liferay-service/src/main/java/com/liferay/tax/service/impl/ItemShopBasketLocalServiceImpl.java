@@ -78,7 +78,7 @@ public class ItemShopBasketLocalServiceImpl
 				dq.add(RestrictionsFactoryUtil.eq("shopBasketId", shopBasketId ));
 			}
 			
-			dq.addOrder(OrderFactoryUtil.desc("itemShopBasketId"));
+			dq.addOrder(OrderFactoryUtil.asc("itemShopBasketId"));
 			
 			list = ItemShopBasketLocalServiceUtil.dynamicQuery(dq);
 			
@@ -96,7 +96,7 @@ public class ItemShopBasketLocalServiceImpl
 			if(name.length() > 0) {
 				dq = dq.add(RestrictionsFactoryUtil.like("name", "%" + name + "%" ));
 			}
-			dq.addOrder(OrderFactoryUtil.desc("itemShopBasketId"));
+			dq.addOrder(OrderFactoryUtil.asc("itemShopBasketId"));
 			list = ItemShopBasketLocalServiceUtil.dynamicQuery(dq);
 			
 		} catch (Exception e) {
@@ -122,8 +122,10 @@ public class ItemShopBasketLocalServiceImpl
 			try {
 				ItemShopBasket i = ItemShopBasketLocalServiceUtil.createItemShopBasket(0);
 				i.setItemShopBasketId(it.getItemId());
+				i.setShopBasketId(it.getShopBasketId());
 				i.setName(it.getName());
 				i.setPrice(it.getPrice());
+				i.setAmount(it.getAmount());
 				i.setIsImported(it.isImported());
 				i.setIsExempt(it.isExempt());
 				i.setActive(it.isActive());

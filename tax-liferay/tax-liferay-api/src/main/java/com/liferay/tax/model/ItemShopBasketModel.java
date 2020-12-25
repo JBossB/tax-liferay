@@ -143,14 +143,14 @@ public interface ItemShopBasketModel extends BaseModel<ItemShopBasket> {
 	 *
 	 * @return the price of this item shop basket
 	 */
-	public Double getPrice();
+	public double getPrice();
 
 	/**
 	 * Sets the price of this item shop basket.
 	 *
 	 * @param price the price of this item shop basket
 	 */
-	public void setPrice(Double price);
+	public void setPrice(double price);
 
 	/**
 	 * Returns the active of this item shop basket.
@@ -178,41 +178,41 @@ public interface ItemShopBasketModel extends BaseModel<ItemShopBasket> {
 	 *
 	 * @return the amount of this item shop basket
 	 */
-	public Double getAmount();
+	public long getAmount();
 
 	/**
 	 * Sets the amount of this item shop basket.
 	 *
 	 * @param amount the amount of this item shop basket
 	 */
-	public void setAmount(Double amount);
+	public void setAmount(long amount);
 
 	/**
 	 * Returns the tax of this item shop basket.
 	 *
 	 * @return the tax of this item shop basket
 	 */
-	public Double getTax();
+	public double getTax();
 
 	/**
 	 * Sets the tax of this item shop basket.
 	 *
 	 * @param tax the tax of this item shop basket
 	 */
-	public void setTax(Double tax);
+	public void setTax(double tax);
 
 	/**
 	 * Returns the total of this item shop basket.
 	 *
 	 * @return the total of this item shop basket
 	 */
-	public Double getTotal();
+	public double getTotal();
 
 	/**
 	 * Sets the total of this item shop basket.
 	 *
 	 * @param total the total of this item shop basket
 	 */
-	public void setTotal(Double total);
+	public void setTotal(double total);
 
 }
