@@ -91,15 +91,12 @@ public class TaxComponentPortlet extends MVCPortlet {
 		for(ItemShopBasket item:items) {
 			if(item.isImported()) {
 				item = new ItemShopBasketTaxImportedDecorator(item);
-				System.out.println("isImported: "+FunctionsUtil.formatDecimal(item.getTotal()));
 			}
 			if(!item.isExempt()) {
 				item = new ItemShopBasketTaxDecorator(item);
-				System.out.println("Not isExempt: "+FunctionsUtil.formatDecimal(item.getTotal()));
 			}
 			if(!item.isImported()&&item.isExempt()) {
 				item = new ItemShopBasketNoTaxDecorator(item);
-				System.out.println("Not Imported && isExempt: "+FunctionsUtil.formatDecimal(item.getTotal()));
 			}
 			if(null!=item) {
 				taxSum += (item.getTotal()-item.getPrice());
@@ -111,24 +108,6 @@ public class TaxComponentPortlet extends MVCPortlet {
 				System.out.println("error");
 			}
 		}
-//		for(ItemShopBasket item:items) {
-//			if(item.isImported()) {
-//				item.setTotal((item.getTotal()==0D?item.getPrice():item.getTotal()) + getTax(item, feeImported));
-//				taxSum += (item.getTotal()-item.getPrice());
-//			}
-//			else if(!item.isExempt()) {
-//				item.setTotal((item.getTotal()==0D?item.getPrice():item.getTotal()) + getTax(item, feeTax));
-//				taxSum += (item.getTotal()-item.getPrice());
-//			}
-//			else {
-//				item.setTotal(item.getPrice());
-//			}
-//			
-//			
-//			totalSum += item.getTotal();
-//			System.out.println(1 + " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getTotal()));
-//			output+=String.valueOf(1 + " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getTotal())+"<br>");
-//		}
 		System.out.println("Sales taxes: "+ FunctionsUtil.formatDecimal(taxSum));
 		System.out.println("Total: "+ FunctionsUtil.formatDecimal(totalSum));
 		
@@ -145,14 +124,6 @@ public class TaxComponentPortlet extends MVCPortlet {
 			output+=String.valueOf(item.getAmount() + " " + item.getName() + " at " + FunctionsUtil.formatDecimal(item.getPrice())+"<br>");
 		}
 		return output;
-	}
-	
-	private static double getTotalPrice(ItemShopBasket item, double fee){
-		return FunctionsUtil.roundPrice(item.getPrice() + getTax(item, fee));
-	}
-	
-	private static double getTax(ItemShopBasket item, double fee) {
-		return FunctionsUtil.nearest5Percent(item.getPrice() * fee);
 	}
 	
 }
